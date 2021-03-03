@@ -1,0 +1,24 @@
+ul.listperso li
+{
+    margin-top:1rem;
+}
+ul.listperso.date
+{
+    color: #2F5496;
+    list-style: none;
+    padding: 0px;
+}
+ul.listperso.fact
+{
+    color: #2F5496;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.place
+{
+    color: #1F3864;
+}
+ul.listperso.date li::before
+{
+    content: "> ";
+}
