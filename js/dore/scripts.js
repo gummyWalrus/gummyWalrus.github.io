@@ -97,7 +97,7 @@ function loadStyle(href, callback) {
 </div>
 `;
 
-  $("body").append(themeColorsDom);
+  //$("body").append(themeColorsDom);
 
 
   /* Default Theme Color, Border Radius and  Direction */
@@ -106,11 +106,11 @@ function loadStyle(href, callback) {
   var radius = "rounded";
 
   if (typeof Storage !== "undefined") {
-    if (localStorage.getItem("dore-theme-color")) {
-      theme = localStorage.getItem("dore-theme-color");
-    } else {
-      localStorage.setItem("dore-theme-color", theme);
-    }
+    // if (localStorage.getItem("dore-theme-color")) {
+    //   theme = localStorage.getItem("dore-theme-color");
+    // } else {
+    //   localStorage.setItem("dore-theme-color", theme);
+    // }
     if (localStorage.getItem("dore-direction")) {
       direction = localStorage.getItem("dore-direction");
     } else {
