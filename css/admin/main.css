@@ -114,3 +114,10 @@ body.show-spinner::after {
             font-size: 18px;
         }
 }
+
+img#LoaderGif {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+}

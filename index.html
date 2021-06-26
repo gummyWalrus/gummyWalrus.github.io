@@ -254,9 +254,31 @@
                     </div>
                 </div>
             </div>
+            <div id="CommentSection" class="container col-12 col-lg-12 col-xl-12">
+                <h2>Comment section</h2>
+                <div class="btn-group" role="group" aria-label="Button group">
+                    <a id="RefreshButton" type="button" class="btn btn-outline-primary">Refresh <i class="iconsminds-reload"></i></a>
+                    <a id="collapsePost" type="button" class="btn btn-outline-primary">Leave a comment <i class="iconsminds-arrow-down"></i></a>
+                </div>
+                <form id="FormComment" class="form form-lg mt-3">
+                    <div class="row row-cols-2 mb-5">
+                        <div class="col-lg-6">
+                            <input name="title" type="text" class="form-control" id="TitleInput" placeholder="Title for the comment">
+                        </div>
+                        <div class="col-lg-6">
+                            <input name="name" type="text" class="form-control" id="NameInput" placeholder="Your Name">
+                        </div>
+                    </div>
+                    <textarea id="tiny" name="comment" class="form-control"></textarea>
+                    <button class="mt-3 btn btn-primary" id="formButton" type="button">Post</button>
+                </form>
+                <div class="row">
+                    <img id="LoaderGif" src="img/load.gif" alt="Loading comments..."/>
+                </div>
+                <div id="CommentSpawn"></div>
+            </div>
         </div>
     </main>
-
     <footer class="page-footer">
         <div class="footer-content">
             <div class="container-fluid">
@@ -276,5 +298,8 @@
     <script src="js/dore/vendor/mousetrap.min.js"></script>
     <script src="js/dore/dore.script.js"></script>
     <script src="js/dore/scripts.js"></script>
+    <script src="js/tinymce/tinymce.min.js"></script>
+    <script src="js/tinymce/jquery.tinymce.min.js"></script>
+    <script src="js/custom/commentaries.js"></script>
 </body>
 </html>
