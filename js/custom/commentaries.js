@@ -36,7 +36,7 @@ const GetHtmlCommentFromJson = function (comment) {
 
 const RequestCommentsFromHarverster = function () {
     $.ajax({
-        url : 'http://51.77.137.170:8082/comment',
+        url : 'https://mycom-api.herokuapp.com/comment',
         type : 'GET',
         dataType : 'json',
         headers: { 'Content-Type': 'application/json' },
@@ -155,16 +155,13 @@ $('button#formButton').on('click', function (e) {
     var flag = false;
 
     e.preventDefault();
-    //try {
-        $('a#ErrorBadge').remove();
-    // } catch () {
-
-    // };
+    $('a#ErrorBadge').remove();
     postCollapsed = !PostCollapsed;
     if ($('#TitleInput').val() === '' || $('#tiny').val() === '') {
         console.log('Title or Comment is Empty');
         console.log('Title ' + $('#TitleInput').val(), 'Comment ' + $('#tiny').val());
         $('a#collapsePost').after('<a id="ErrorBadge" class="btn btn-danger">Please type in a comment and a title.<i class="iconsminds-close"></i></a>');
+        return;
     }
     else if ($('#NameInput').val() === '') {
         console.log('Name is Empty, replace by anonymous');
@@ -188,15 +185,20 @@ $('button#formButton').on('click', function (e) {
         $('form#FormComment').trigger('reset');
         console.log(JSON.stringify(newComment));
         $.ajax({
-            url : 'http://51.77.137.170:8082/add_comment',
+            url : 'https://mycom-api.herokuapp.com/add_comment',
             type : 'POST',
             dataType : 'text',
             headers: { 'Content-Type': 'application/json' },
             data : JSON.stringify(newComment),
             success : function(text, statut){
+                $('a#ErrorBadge').remove();
                 if (text === "SUCCESS") {
                     console.log(text);
                 }
+                else if (text.contains('script'))
+                    $('a#collapsePost').after('<a id="ErrorBadge" class="btn btn-danger">Please type in a comment and a title.<i class="iconsminds-close"></i></a>');
+                else if (text.contains('img'))
+                    $('a#collapsePost').after('<a id="ErrorBadge" class="btn btn-danger">Please type in a comment and a title.<i class="iconsminds-close"></i></a>');
                 else console.log(text);
             },
     
