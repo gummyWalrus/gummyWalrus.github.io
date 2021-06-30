@@ -63,13 +63,24 @@ const RequestCommentsFromHarverster = function () {
      });
 };
 
+
+var settings = {
+    method: 'GET',
+    sync: true
+}
+
+fetch('https://mycom-api.herokuapp.com', settings).then((response) => {
+    if (response.status === 404)
+        console.log('Herokuapp is up and running');
+        RequestCommentsFromHarverster();
+});
+
+
 /*      Recupère tous les commentaires de la page dans un tableau
 
         async
         Return type : DOM Element Array
 */
-
-
 const GetAllComments = function () {
     var flag = true;
     var comment = undefined;
@@ -79,8 +90,7 @@ const GetAllComments = function () {
         comment = $(`div#comment${i}`);
         if (comment !== undefined)
             comments.push(comment);
-        else
-        flag = false;
+        else flag = false;
     }
     return comments;
 };
@@ -98,7 +108,6 @@ const RmComments = function (index) {
 
 $('form#FormComment').hide();
 $('img#LoaderGif').hide();
-RequestCommentsFromHarverster();
 
 $('textarea#tiny').tinymce({
     height: 300,
